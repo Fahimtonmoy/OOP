@@ -3,9 +3,12 @@ class BalanceException(Exception):
 
 class BankAccount:
 
+    acc_dict = {}
+
     def __init__(self, amount, name) -> None:
         self.balance = amount
         self.name =  name 
+        BankAccount.acc_dict[self.name] = self.balance
         print(f"\nA new account is created. Account information is given below.\nAccount name = '{self.name}'. \nBalance = ${self.balance:.2f}")
 
     
@@ -69,4 +72,3 @@ class ServiceCharge(interestReward):
             self.check_balance()
         except BalanceException as error:
             print(f"\nTransfer interrupted!: {error}")   
-    
