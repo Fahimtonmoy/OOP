@@ -1,24 +1,15 @@
 from bank_acc import *
 import pickle
 
-acc_dict = {}
+fahim = BankAccount(1000, 'fahim')   
+muhtasim = BankAccount(1000, 'muhtasim')
+hossain = BankAccount(1000, 'hossain')             
 
-def make_account(amount, name, function):
-    acc = function(amount, name)
-    acc_dict[acc.name] = acc
-
-                 
-                 
-make_account(1000, 'fahim', BankAccount)
-make_account(2000, 'muhtasim', interestReward)
-make_account(3000, 'hossain', ServiceCharge)
-
-acc_dict["fahim"].deposit(1000)
-acc_dict["muhtasim"].deposit(500)
-acc_dict["hossain"].withdraw(2050)
-
-acc_dict['hossain'].money_transfer(1000, acc_dict['muhtasim'])
-acc_dict['fahim'].money_transfer(2010, acc_dict['hossain'])
+fahim.deposit(1000)
+muhtasim.deposit(500)
+hossain.deposit(2050)
+hossain.money_transfer(1000, muhtasim)
+fahim.money_transfer(2010, hossain)
 
 
 def save_object(file, objs):
@@ -41,7 +32,7 @@ def load_object(file):
         return objs
 
 filename = 'objects.pkl'
-save_object(filename, [acc_dict['fahim'], acc_dict['muhtasim'], acc_dict['hossain']])
+save_object(filename, [fahim, muhtasim, hossain])
 
 
 objects = load_object('objects.pkl')
