@@ -1,15 +1,15 @@
 from bank_acc import *
 import pickle
 
-fahim = BankAccount(1000, 'fahim')   
-muhtasim = BankAccount(1000, 'muhtasim')
-hossain = BankAccount(1000, 'hossain')             
+client_1 = BankAccount(1000, 'client_1')   
+client_2 = BankAccount(1000, 'client_2')
+client_3 = BankAccount(1000, 'client_3')             
 
-fahim.deposit(1000)
-muhtasim.deposit(500)
-hossain.deposit(2050)
-hossain.money_transfer(1000, muhtasim)
-fahim.money_transfer(2010, hossain)
+client_1.deposit(1000)
+client_2.deposit(500)
+client_3.deposit(2050)
+client_3.money_transfer(1000, client_2)
+client_1.money_transfer(2010, client_3)
 
 
 def save_object(file, objs):
@@ -32,7 +32,7 @@ def load_object(file):
         return objs
 
 filename = 'objects.pkl'
-save_object(filename, [fahim, muhtasim, hossain])
+save_object(filename, [client_1, client_2, client_3])
 
 
 objects = load_object('objects.pkl')
